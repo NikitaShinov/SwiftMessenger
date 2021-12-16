@@ -19,6 +19,7 @@
 		508350BC276A446F006ED66E /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508350BB276A446F006ED66E /* VideoPlayerViewController.swift */; };
 		508350BE276A448D006ED66E /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508350BD276A448D006ED66E /* NewConversationViewController.swift */; };
 		508350C0276A449D006ED66E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508350BF276A449D006ED66E /* ProfileViewController.swift */; };
+		508350C3276B585A006ED66E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508350C2276B585A006ED66E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		508350BB276A446F006ED66E /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		508350BD276A448D006ED66E /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		508350BF276A449D006ED66E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		508350C2276B585A006ED66E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				5083509C276A4083006ED66E /* AppDelegate.swift */,
 				5083509E276A4083006ED66E /* SceneDelegate.swift */,
+				508350C2276B585A006ED66E /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				508350BE276A448D006ED66E /* NewConversationViewController.swift in Sources */,
 				508350A1276A4083006ED66E /* ConverstionsViewController.swift in Sources */,
 				508350BC276A446F006ED66E /* VideoPlayerViewController.swift in Sources */,
+				508350C3276B585A006ED66E /* Extensions.swift in Sources */,
 				5083509D276A4083006ED66E /* AppDelegate.swift in Sources */,
 				508350C0276A449D006ED66E /* ProfileViewController.swift in Sources */,
 				5083509F276A4083006ED66E /* SceneDelegate.swift in Sources */,
