@@ -190,22 +190,30 @@ class RegisterViewController: UIViewController {
         
         // Firebase login
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let result = authResult, error == nil else {
-                print ("Error creating User")
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
+            guard let strongSelf = self else { return }
+            guard !exists else {
+                strongSelf.aletUserLoginError(message: "User already exists")
                 return
             }
-            
-            let user = result.user
-            print ("Crated user: \(user)")
-        }
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+                guard authResult != nil, error == nil else {
+                    print ("Error creating User")
+                    return
+                }
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                    lastName: lastName,
+                                                                    emailAddress: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+            })
+        })
     }
     
-    func aletUserLoginError() {
-        let alert = UIAlertController(title: "Ooops", message: "Please enter correct information", preferredStyle: .alert)
+    func aletUserLoginError(message: String = "Please enter correct information") {
+        let alert = UIAlertController(title: "Ooops", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .cancel))
         present(alert, animated: true)
-        
     }
     
     @objc private func didTapRegister() {
