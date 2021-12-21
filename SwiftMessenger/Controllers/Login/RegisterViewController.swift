@@ -18,12 +18,9 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.fill.badge.plus")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }()
     
