@@ -22,6 +22,10 @@
 		508350C3276B585A006ED66E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508350C2276B585A006ED66E /* Extensions.swift */; };
 		508350C5276E420A006ED66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 508350C4276E420A006ED66E /* GoogleService-Info.plist */; };
 		509E5B8D2772110900A440EC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509E5B8C2772110900A440EC /* DatabaseManager.swift */; };
+		50EB88C4277373DC00716B62 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C3277373DC00716B62 /* FacebookCore */; };
+		50EB88C6277373DC00716B62 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C5277373DC00716B62 /* FacebookGamingServices */; };
+		50EB88C8277373DC00716B62 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C7277373DC00716B62 /* FacebookLogin */; };
+		50EB88CA277373DC00716B62 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C9277373DC00716B62 /* FacebookShare */; };
 		E1446F0C5AF72A6E52DEBBDC /* Pods_SwiftMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124009164DE11C4115CE3353 /* Pods_SwiftMessenger.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +57,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50EB88C8277373DC00716B62 /* FacebookLogin in Frameworks */,
+				50EB88C6277373DC00716B62 /* FacebookGamingServices in Frameworks */,
 				E1446F0C5AF72A6E52DEBBDC /* Pods_SwiftMessenger.framework in Frameworks */,
+				50EB88CA277373DC00716B62 /* FacebookShare in Frameworks */,
+				50EB88C4277373DC00716B62 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +192,12 @@
 			dependencies = (
 			);
 			name = SwiftMessenger;
+			packageProductDependencies = (
+				50EB88C3277373DC00716B62 /* FacebookCore */,
+				50EB88C5277373DC00716B62 /* FacebookGamingServices */,
+				50EB88C7277373DC00716B62 /* FacebookLogin */,
+				50EB88C9277373DC00716B62 /* FacebookShare */,
+			);
 			productName = SwiftMessenger;
 			productReference = 50835099276A4083006ED66E /* SwiftMessenger.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +226,9 @@
 				Base,
 			);
 			mainGroup = 50835090276A4083006ED66E;
+			packageReferences = (
+				50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 5083509A276A4083006ED66E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -514,6 +531,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50EB88C3277373DC00716B62 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		50EB88C5277373DC00716B62 /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		50EB88C7277373DC00716B62 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		50EB88C9277373DC00716B62 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50EB88C2277373DC00716B62 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50835091276A4083006ED66E /* Project object */;
 }
