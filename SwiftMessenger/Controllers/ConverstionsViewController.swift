@@ -33,10 +33,24 @@ class ConverstionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+                                                            target: self,
+                                                            action: #selector(didTapComposeButton))
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         setupTableView()
         fetchConversations()
+    }
+    
+    @objc private func didTapComposeButton() {
+        let vc = NewConversationViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        present (navVC, animated: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,6 +86,7 @@ extension ConverstionsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "Hello"
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
