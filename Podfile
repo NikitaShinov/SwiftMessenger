@@ -8,5 +8,6 @@ target 'SwiftMessenger' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'GoogleSignIn', '~> 5.0.2'
 
 end
