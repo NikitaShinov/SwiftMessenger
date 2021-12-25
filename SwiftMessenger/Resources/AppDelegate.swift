@@ -61,6 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                            lastName: lastName,
                                            emailAddress: email)
                 
+                UserDefaults.standard.set(email, forKey: "email")
+                
                 DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
                     if success {
                         // upload image
