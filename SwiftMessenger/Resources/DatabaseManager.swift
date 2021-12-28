@@ -122,3 +122,52 @@ struct ChatAppUser {
         return "\(safeEmail)_profile_picture.png"
     }
 }
+
+// MARK: - SENDING MESSAGES/CONVERATIONS
+
+extension DatabaseManager {
+    
+    /*
+     "agjkfhar" {
+        "messages": [
+            {
+                "id": String
+                "type": text, photo, video
+                "content": String
+                "date": Date()
+                "sender_email": String
+                "isRead": true/false
+            }
+        ]
+     }
+    
+     conversation =>
+     [
+        [
+            "conversation_id": "agjkfhar"
+            "other_user_email":
+            "latest_message": => {
+                "date": Date()
+                "latest_message": "message"
+                "is_read": true/false
+            }
+        ]
+     ]
+     */
+    ///Create a new convo with target user email and first message sent
+    public func createNewConversation(with otherUserEmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+        
+    }
+    ///Fetches and returns all convos for the user with passed in email
+    public func getAllConversations(for email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    ///gets all messages for selected convo
+    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    ///sends a message with target convo and message
+    public func sendMessage(to conversation: String, message: Message, completion: @escaping (Bool) -> Void) {
+        
+    }
+}
