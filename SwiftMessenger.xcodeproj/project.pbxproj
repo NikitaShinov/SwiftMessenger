@@ -23,6 +23,7 @@
 		508350C5276E420A006ED66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 508350C4276E420A006ED66E /* GoogleService-Info.plist */; };
 		5087B147277513090014383A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087B146277513090014383A /* ChatViewController.swift */; };
 		5087B1492775EEAE0014383A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087B1482775EEAE0014383A /* StorageManager.swift */; };
+		5087B14B277F7C670014383A /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087B14A277F7C670014383A /* ConversationTableViewCell.swift */; };
 		509E5B8D2772110900A440EC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509E5B8C2772110900A440EC /* DatabaseManager.swift */; };
 		50EB88C4277373DC00716B62 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C3277373DC00716B62 /* FacebookCore */; };
 		50EB88C6277373DC00716B62 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 50EB88C5277373DC00716B62 /* FacebookGamingServices */; };
@@ -52,6 +53,7 @@
 		508350C4276E420A006ED66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5087B146277513090014383A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5087B1482775EEAE0014383A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		5087B14A277F7C670014383A /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		509E5B8C2772110900A440EC /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		862A2CE31A77015BFD061393 /* Pods-SwiftMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMessenger.debug.xcconfig"; path = "Target Support Files/Pods-SwiftMessenger/Pods-SwiftMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				508350B4276A42C1006ED66E /* Storyboards */,
 				508350A5276A4085006ED66E /* Assets.xcassets */,
 				508350A7276A4085006ED66E /* LaunchScreen.storyboard */,
+				5087B14A277F7C670014383A /* ConversationTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				5083509D276A4083006ED66E /* AppDelegate.swift in Sources */,
 				508350C0276A449D006ED66E /* ProfileViewController.swift in Sources */,
 				5083509F276A4083006ED66E /* SceneDelegate.swift in Sources */,
+				5087B14B277F7C670014383A /* ConversationTableViewCell.swift in Sources */,
 				5087B147277513090014383A /* ChatViewController.swift in Sources */,
 				508350BA276A4464006ED66E /* PhotoViewerViewController.swift in Sources */,
 				5087B1492775EEAE0014383A /* StorageManager.swift in Sources */,
