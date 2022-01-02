@@ -9,15 +9,30 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
+struct Conversation {
+    let id: String
+    let name: String
+    let otherUserEmail: String
+    let latestMessage: LatestMessage
+}
+
+struct LatestMessage {
+    let date: String
+    let text: String
+    let isRead: Bool
+}
+
 class ConverstionsViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    private var conversations = [Conversation]()
+    
     private let tableView: UITableView = {
         let table = UITableView()
         table.isHidden = true
-        table.register(UITableViewCell.self,
-                       forCellReuseIdentifier: "cell")
+        table.register(ConversationTableViewCell.self,
+                       forCellReuseIdentifier: ConversationTableViewCell.identifier)
         return table
     }()
     
@@ -40,6 +55,10 @@ class ConverstionsViewController: UIViewController {
         view.addSubview(noConversationsLabel)
         setupTableView()
         fetchConversations()
+    }
+    
+    private func startListeningForConversations() {
+        
     }
     
     @objc private func didTapComposeButton() {
