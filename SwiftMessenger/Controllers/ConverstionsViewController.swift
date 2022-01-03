@@ -55,10 +55,28 @@ class ConverstionsViewController: UIViewController {
         view.addSubview(noConversationsLabel)
         setupTableView()
         fetchConversations()
+        startListeningForConversations()
     }
     
     private func startListeningForConversations() {
-        
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
+        print ("starting conversations fetch...")
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        DatabaseManager.shared.getAllConversations(for: safeEmail, completion: { [weak self]result in
+            switch result {
+            case .success(let conversations):
+                print ("Got all convos")
+                guard !conversations.isEmpty else {
+                    return
+                }
+                self?.conversations = conversations
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print ("Failed to get convos:\(error)")
+            }
+        })
     }
     
     @objc private func didTapComposeButton() {
@@ -111,24 +129,28 @@ class ConverstionsViewController: UIViewController {
 extension ConverstionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hello"
-        cell.accessoryType = .disclosureIndicator
+        let model = conversations[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConversationTableViewCell.identifier, for: indexPath) as! ConversationTableViewCell
+        cell.configure(with: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let vc = ChatViewController(with: "ajkfa@gmail.com")
-        vc.title = "Mike Dean"
+        let model = conversations[indexPath.row]
+        let vc = ChatViewController(with: model.otherUserEmail)
+        vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
     }
 
 }
