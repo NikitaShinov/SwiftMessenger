@@ -62,7 +62,7 @@ class ConverstionsViewController: UIViewController {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
         print ("starting conversations fetch...")
         let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
-        DatabaseManager.shared.getAllConversations(for: safeEmail, completion: { [weak self]result in
+        DatabaseManager.shared.getAllConversations(for: safeEmail, completion: { [weak self] result in
             switch result {
             case .success(let conversations):
                 print ("Got all convos")
@@ -90,7 +90,7 @@ class ConverstionsViewController: UIViewController {
     
     private func createNewConversation(result: [String: String]) {
         guard let name = result["name"], let email = result["email"] else { return }
-        let vc = ChatViewController(with: email)
+        let vc = ChatViewController(with: email, id: nil)
         vc.isNewConversation = true
         vc.title = name
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -133,8 +133,8 @@ extension ConverstionsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = conversations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ConversationTableViewCell.identifier, for: indexPath) as! ConversationTableViewCell
+        let model = conversations[indexPath.row]
         cell.configure(with: model)
         return cell
     }
@@ -142,7 +142,7 @@ extension ConverstionsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = conversations[indexPath.row]
-        let vc = ChatViewController(with: model.otherUserEmail)
+        let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
         vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
