@@ -90,8 +90,8 @@ class LoginViewController: UIViewController {
             queue: .main,
             using: { [weak self] _ in
             guard let strongSelf = self else { return }
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)}
-        )
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
         
         GIDSignIn.sharedInstance().presentingViewController = self
         
