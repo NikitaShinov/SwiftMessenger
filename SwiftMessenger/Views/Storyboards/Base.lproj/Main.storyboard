@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bpH-WZ-AeJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bpH-WZ-AeJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +28,7 @@
         <scene sceneID="D40-TZ-rA6">
             <objects>
                 <navigationController id="SJP-Va-8K5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Jq5-LW-TTB"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="Jq5-LW-TTB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="G3c-Vf-qiG">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -94,7 +94,7 @@
         <scene sceneID="fCr-tK-8O8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sB5-Sz-P2C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" id="cZ1-Zj-cz7"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="cZ1-Zj-cz7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="O3j-dt-HBi">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -111,6 +111,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
