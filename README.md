@@ -12,4 +12,4 @@ Main Features
 - Location messages
 - Deleting conversations
 - User profile
-- Dark mode suppord
+- Dark mode support
