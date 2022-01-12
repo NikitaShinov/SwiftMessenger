@@ -11,11 +11,16 @@ import MessageKit
 import UIKit
 import CoreLocation
 
+///Manager object to read and write data to realtime database
+
 final class DatabaseManager {
     
-    static let  shared = DatabaseManager()
+    ///Shared instance of classe
+    public static let  shared = DatabaseManager()
     
     private let database = Database.database().reference()
+    
+    private init () {}
     
     static func safeEmail(emailAddress: String) -> String {
         var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
@@ -26,7 +31,9 @@ final class DatabaseManager {
     public func insertUser(with user: ChatAppUser, completion: @escaping (Bool) -> Void) {
         database.child(user.safeEmail).setValue(["first_name": user.firstName,
                                                  "last_name": user.lastName],
-                                                withCompletionBlock: { error, _ in
+                                                withCompletionBlock: { [weak self] error, _ in
+            
+            guard let strongSelf = self else { return }
             guard error == nil else {
                 print ("Failed to write to database")
                 completion(false)
@@ -43,7 +50,7 @@ final class DatabaseManager {
              ]
              */
             
-            self.database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+            strongSelf.database.child("users").observeSingleEvent(of: .value, with: { snapshot in
                 if var usersCollection = snapshot.value as? [[String: String ]] {
                     let newElement = [
                         "name": user.firstName + " " + user.lastName,
@@ -51,7 +58,7 @@ final class DatabaseManager {
                     ]
                     usersCollection.append(newElement)
                     
-                    self.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
+                    strongSelf.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
                         guard error == nil else {
                             completion(false)
                             return
@@ -66,7 +73,7 @@ final class DatabaseManager {
                             "email": user.safeEmail
                         ]
                     ]
-                    self.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
+                    strongSelf.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
                         guard error == nil else {
                             completion(false)
                             return
@@ -77,7 +84,7 @@ final class DatabaseManager {
             })
         })
     }
-    
+    /// gets all users from database
     public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void ) {
         database.child("users").observeSingleEvent(of: .value, with: { snapshot in
             guard let value = snapshot.value as? [[String: String]] else {
@@ -88,6 +95,11 @@ final class DatabaseManager {
             completion(.success(value))
         })
     }
+    
+    ///Checks if user exists for given email
+    ///Parameters
+    /// - 'email' Target email to be checked
+    /// - 'completion' Async closure to return with result
     
     public func userExists(with email: String, completion: @escaping ((Bool) -> Void)) {
         
@@ -636,7 +648,7 @@ extension DatabaseManager {
 extension DatabaseManager {
     
     public func getDataFor(path: String, completion: @escaping (Result<Any, Error>) -> Void) {
-        self.database.child("\(path)").observeSingleEvent(of: .value, with: { snapshot in
+        database.child("\(path)").observeSingleEvent(of: .value, with: { snapshot in
             guard let value = snapshot.value else {
                 completion(.failure(DatabaseError.failedToFetch))
                 return

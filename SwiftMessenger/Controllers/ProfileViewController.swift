@@ -12,17 +12,9 @@ import GoogleSignIn
 import FirebaseStorage
 import SDWebImage
 
-enum ProfileViewModelType {
-    case info, logout
-}
 
-struct ProfileViewModel {
-    let viewModelType: ProfileViewModelType
-    let title: String
-    let handler: (() -> Void)?
-}
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
@@ -149,11 +141,11 @@ class ProfileTableViewCell: UITableViewCell {
         self.textLabel?.text = viewModel.title
         switch viewModel.viewModelType {
         case .info:
-            self.textLabel?.textAlignment = .left
-            self.selectionStyle = .none
+            textLabel?.textAlignment = .left
+            selectionStyle = .none
         case .logout:
-            self.textLabel?.textColor = .red
-            self.textLabel?.textAlignment = .center
+            textLabel?.textColor = .red
+            textLabel?.textAlignment = .center
         }
     }
 }
