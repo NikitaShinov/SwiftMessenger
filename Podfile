@@ -9,6 +9,8 @@ target 'SwiftMessenger' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'MessageKit'
   pod 'JGProgressHUD'
