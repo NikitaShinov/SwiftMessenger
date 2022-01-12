@@ -56,7 +56,6 @@ class ConverstionsViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         setupTableView()
-        fetchConversations()
         startListeningForConversations()
         
         loginObserver = NotificationCenter.default.addObserver(
@@ -82,14 +81,22 @@ class ConverstionsViewController: UIViewController {
             case .success(let conversations):
                 print ("Got all convos")
                 guard !conversations.isEmpty else {
+                    self?.tableView.isHidden = true
+                    self?.noConversationsLabel.isHidden = false
                     return
                 }
+                self?.noConversationsLabel.isHidden = false
+                self?.tableView.isHidden = false
                 self?.conversations = conversations
+                
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
+                self?.tableView.isHidden = true
+                self?.noConversationsLabel.isHidden = false
                 print ("Failed to get convos:\(error)")
+                
             }
         })
     }
@@ -148,6 +155,10 @@ class ConverstionsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+        noConversationsLabel.frame = CGRect(x: 10,
+                                            y: (view.height-100) / 2,
+                                            width: view.width - 20,
+                                            height: 100)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -169,9 +180,6 @@ class ConverstionsViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func fetchConversations() {
-        tableView.isHidden = false
-    }
 }
 
 extension ConverstionsViewController: UITableViewDelegate, UITableViewDataSource {
